@@ -26,6 +26,10 @@ public class ExamenEntity {
     @JsonIgnore
     private Set<PreguntaEntity> preguntas = new HashSet<>();
 
+    @OneToMany(mappedBy = "userusuario", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<ExamenAlumnoEntity> examenalumnoentity = new HashSet<>();
+
     public Long getExamenId() {
         return examenId;
     }
@@ -91,5 +95,13 @@ public class ExamenEntity {
     }
 
     public ExamenEntity() {
+    }
+
+    public Set<ExamenAlumnoEntity> getExamenalumnoentity() {
+        return examenalumnoentity;
+    }
+
+    public void setExamenalumnoentity(Set<ExamenAlumnoEntity> examenalumnoentity) {
+        this.examenalumnoentity = examenalumnoentity;
     }
 }

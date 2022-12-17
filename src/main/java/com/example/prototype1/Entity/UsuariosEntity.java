@@ -109,6 +109,10 @@ public class UsuariosEntity implements UserDetails {
     @JsonIgnore
     private Set<UsuarioRolEntity> usuariorolentity = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "examenunico")
+    @JsonIgnore
+    private Set<ExamenAlumnoEntity> examenalumnoentity = new HashSet<>();
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -146,5 +150,12 @@ public class UsuariosEntity implements UserDetails {
 
     }
 
+    public Set<ExamenAlumnoEntity> getExamenalumnoentity() {
+        return examenalumnoentity;
+    }
+
+    public void setExamenalumnoentity(Set<ExamenAlumnoEntity> examenalumnoentity) {
+        this.examenalumnoentity = examenalumnoentity;
+    }
 }
 
